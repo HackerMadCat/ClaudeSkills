@@ -1,37 +1,82 @@
 ---
-name: "content-style"
-description: "Structure rules for any written text: Slack drafts, YouTrack issues/comments, commit messages, docs, notes, project markdown. Use whenever writing or editing prose for Sergei."
+name: content-style
+description: "How to write any text a person will read. Use every time you generate such text. It sets content and wording, and context sets the skeleton."
 ---
 
-## Content Style
+# Content style
 
-How to structure any written artifact: Slack drafts, YouTrack issues and comments, commit messages, Google Docs, scratch notes. Structure only — markup syntax follows each tool's own conventions.
+Write a short, clean text that a person understands on the first read. Every rule below serves this goal, so drop a rule if it makes the text worse. A text that passes every rule but is hard to read has failed. Rewrite it then, or say plainly why it did not come out clean.
 
-1. **Brevity.** Minimum words per fact. Prose only where rules 6–7 allow it.
-2. **Point first.** The first line says what happened or what is needed; everything else supports it.
-   - Bad: `Yesterday we started looking into the flaky tests and after some digging…`
-   - Good: `Nightly build is red because of a race in IndexCache` + sub-bullets
-3. **Lists and headers, not paragraphs or tables.** Content goes into flat or nested lists, one header per topic when the text covers several.
-4. **One thought per line.** Independent facts go into nested sub-bullets, not chained with dashes and semicolons.
-   - Bad: `Rolled back the release — migration locks the users table, ~5% of requests affected, fix in review, ETA tomorrow`
-   - Good: top line — what happened; sub-bullets — cause, impact, next step
-   - Rule of thumb: a line longer than two screen lines almost always splits
-5. **Comparable items within a category.** Items of one kind are described with the same fields in the same order.
-   - Named field goes in bold at the start of the line: `- **Cost:** 2 days`
-   - Comparable: each option in a proposal → what it is, cost, risk
-   - Not comparable: one option has a risk field, another doesn't; one cost is a number, another a paragraph
-6. **Uncategorizable but important → note or conclusion.** A fact that fits no field goes into a `>` note above the list or into a conclusion, not forced into a field it doesn't belong to.
-7. **Notes and conclusions — 1–2 simple sentences max.** No reasoning chains, filler words or hedging.
-8. **One level of abstraction per text.** A text about X contains facts about X, not conclusions about using X elsewhere.
-   - Issue: bug, repro, expected vs actual; impact on the roadmap goes to the planning doc
-   - Commit message: what changed and why; the investigation story goes to the issue
-   - Code comment: why this code is the way it is; the migration plan goes to the issue
-9. **No meta about the writing process.** No "double-checked", "updated after discussion", edit history.
-   - An open question on substance is data — keep it
-   - How and when the text was revised is not — version history covers that
+The skill sets content and wording. The skeleton comes from context: the tool, the template, the genre.
 
-## Applying
+## Input
 
-- Don't copy the wording of the request or source verbatim — the job is to structure and research, not to retell.
-- Not enough data for a field — say so and ask, don't fill in guesses.
-- No context/root-cause/expected essay structure in YouTrack issues. Keep them terse: 2–4 short paragraphs or a short list.
+The user's message is material for analysis, not a draft. Work out what the user means and say it in the clearest way, without quoting or retelling. If a fact is missing, ask instead of guessing.
+
+## Process
+
+Writing is a loop. Repeat it until there is nothing left to remove.
+
+1. Write the main thought in one sentence. If it does not come out, the material is not understood yet.
+2. Unfold the main thought: group the supporting points, order them, cut the rest.
+3. Fix the wording by the rules below.
+4. Add accents where the reader needs them.
+5. Reread as the reader and return to the step that broke.
+
+## Structure
+
+The main thought comes first, and everything after it supports it. Content on another level of abstraction does not support it, so it goes to another text or is cut. Each section and each paragraph also opens with its own thought.
+
+Each block is prose or a list. Prose fits a chain of statements linked by cause, consequence or contrast, because a list would lose the links. A list fits parallel members of one category. A block that fits neither means the thought is not sorted out yet.
+
+## Paragraphs
+
+A paragraph is one thought, stated in its first sentence. The other sentences form a chain: each one starts with what the previous one ended with. A connective of cause, consequence, contrast or illustration fits between any two neighbours. If the chain breaks, reorder the sentences first. If no order works, the sentences do not belong together, so split the paragraph, turn it into a list, or cut.
+
+## Lists
+
+- One thought per item
+- The same grammatical form in all items
+- The same fields in the same order for comparable items
+
+## Sentences
+
+- One statement per sentence, at most about 25 words
+- Condition before action
+- Known information at the start, new information at the end
+- Subject close to verb, active voice
+- One name for one thing throughout the text
+- No filler, no hedging
+
+## Accents
+
+Position, headers, lists, bold, italic, code and notes are all accents. Each accent costs attention, so a text needs few of them. One element gets one accent: a header, a list item or a note is already an accent and needs no bold on top.
+
+- Position is the strongest accent: the start of the text, the start of a paragraph, the end of a sentence.
+- A header marks a topic the reader moves to. It names the topic or states the thought, works out of context, and uses sentence case.
+- Bold marks the few words the eye must catch on a skim.
+- Italic marks light emphasis or a new term.
+- Code marks anything literal or meant to be copied.
+- A note marks an important fact that fits no list field.
+
+## Generated look
+
+These patterns make text read as generated. Remove them:
+
+- Claims of significance that the facts do not show, advertising adjectives
+- Commentary on the text itself or on how it was written
+- A closing summary that repeats the text
+- A trailing clause that adds an evaluation instead of a fact
+- Rhetorical templates: forced triads, staged contrasts, symmetric constructions
+- Emoji
+- Em dashes where a comma, colon or full stop fits
+
+## Sources
+
+- [The Pyramid Principle](https://barbaraminto.com/about), Barbara Minto: main thought first, support grouped under it
+- [The Science of Scientific Writing](https://www.americanscientist.org/blog/the-long-view/the-science-of-scientific-writing), George Gopen and Judith Swan: known before new, subject close to verb
+- [ASD-STE100 Simplified Technical English](https://www.asd-ste100.org/): short sentences, one statement per sentence, one word for one meaning
+- [Headings Are Pick-Up Lines](https://www.nngroup.com/articles/headings-pickup-lines/), Hoa Loranger, NN/g: headers that work out of context
+- [Practical Typography: Bold or italic](https://practicaltypography.com/bold-or-italic.html), Matthew Butterick: bold for a few words, italic for light emphasis
+- [5 Formatting Techniques for Long-Form Content](https://www.nngroup.com/articles/formatting-long-form-content/), NN/g: cut the content before formatting it
+- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing): patterns of generated text
